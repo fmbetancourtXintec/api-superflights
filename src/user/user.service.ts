@@ -26,4 +26,10 @@ export class UserService {
     //   console.log("aqui!");
     // }
   }
+
+  async findAll(): Promise<IUser[]>{
+      return await this.model.find();
+  }
+
+
 }
