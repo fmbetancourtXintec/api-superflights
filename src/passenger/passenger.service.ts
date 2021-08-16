@@ -16,4 +16,8 @@ export class PassengerService {
     return await newPassenger.save();
   }
 
+  async findAll(): Promise<IPassenger[]>{
+    return await this.model.find();
+  }
+
 }
