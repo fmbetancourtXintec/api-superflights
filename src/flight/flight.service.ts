@@ -5,6 +5,7 @@ import { Model } from "mongoose";
 import { IFlight } from "../common/interfaces/flight.inteface";
 import { FlightDTO } from "./dto/flight.dto";
 import { IPassenger } from "../common/interfaces/passenger.interface";
+import { PassengerDTO } from "../passenger/dto/passenger.dto";
 
 @Injectable()
 export class FlightService {
@@ -23,6 +24,10 @@ export class FlightService {
 
   async findOne(id: string): Promise<IFlight>{
     return await this.model.findById(id);
+  }
+
+  async update(id: string, flightDTO: FlightDTO): Promise<IFlight>{
+    return await this.model.findByIdAndUpdate(id, flightDTO, { new: true });
   }
 
 }

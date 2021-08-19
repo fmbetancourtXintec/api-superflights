@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
 import { FlightService } from "./flight.service";
 import { FlightDTO } from "./dto/flight.dto";
+import { PassengerDTO } from "../passenger/dto/passenger.dto";
 
 @Controller('api/v1/flight')
 export class FlightController {
@@ -21,6 +22,11 @@ export class FlightController {
   @Get(':id')
   findOne(@Param('id') id: string){
     return this.flightService.findOne(id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() flightDTO:FlightDTO){
+    return this.flightService.update(id, flightDTO);
   }
 
 }
