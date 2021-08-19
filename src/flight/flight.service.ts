@@ -4,6 +4,7 @@ import { FLIGHT } from "../common/models/models";
 import { Model } from "mongoose";
 import { IFlight } from "../common/interfaces/flight.inteface";
 import { FlightDTO } from "./dto/flight.dto";
+import { IPassenger } from "../common/interfaces/passenger.interface";
 
 @Injectable()
 export class FlightService {
@@ -18,6 +19,10 @@ export class FlightService {
 
   async findAll(): Promise<IFlight[]>{
     return await this.model.find();
+  }
+
+  async findOne(id: string): Promise<IFlight>{
+    return await this.model.findById(id);
   }
 
 }
