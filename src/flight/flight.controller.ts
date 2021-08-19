@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post } from "@nestjs/common";
 import { FlightService } from "./flight.service";
 import { FlightDTO } from "./dto/flight.dto";
 
@@ -12,4 +12,10 @@ export class FlightController {
   create(@Body() flightDTO: FlightDTO){
     return this.flightService.create(flightDTO);
   }
+
+  @Get()
+  findAll(){
+    return this.flightService.findAll();
+  }
+
 }
